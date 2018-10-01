@@ -1,0 +1,19 @@
+# 指定语言 https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
+language: node_js
+sudo: false
+# 缓存 node_modules 文件夹，不需要每次都下载安装全部 npm 包。
+cache:
+  directories:
+    - node_modules
+# 指定 node 版本
+node_js:
+- "lts/*"
+# 只对指定的分支执行构建  https://docs.travis-ci.com/user/customizing-the-build/#building-specific-branches
+branches:
+  only:
+    - master
+# 要执行的脚本
+script:
+  - npm install
+  - npm run docs:deploy
+
