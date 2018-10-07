@@ -12,7 +12,9 @@ module.exports = {
         title: '介绍',
         collapsable: false,
         children: [
-          '/introduce'
+          '/introduce',
+          '/util',
+          '/data-type'
         ]
       }
     ]
