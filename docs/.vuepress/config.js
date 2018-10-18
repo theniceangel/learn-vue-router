@@ -13,6 +13,13 @@ module.exports = {
         collapsable: false,
         children: [
           '/introduce',
+          '/install'
+        ]
+      },
+      {
+        title: '杂项',
+        collapsable: false,
+        children: [
           '/util',
           '/data-type'
         ]
