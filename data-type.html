@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>数据类型总览 | Vue Router源码分析</title>
+    <meta name="description" content="Vue Router 源码分析">
+    
+    
+    <link rel="preload" href="/learn-vue-router/assets/css/styles.20ecd743.css" as="style"><link rel="preload" href="/learn-vue-router/assets/js/app.20ecd743.js" as="script"><link rel="preload" href="/learn-vue-router/assets/js/4.2f25cbbd.js" as="script"><link rel="prefetch" href="/learn-vue-router/assets/js/2.a40b0877.js"><link rel="prefetch" href="/learn-vue-router/assets/css/1.styles.5a8ea794.css"><link rel="prefetch" href="/learn-vue-router/assets/js/1.5a8ea794.js"><link rel="prefetch" href="/learn-vue-router/assets/css/2.styles.a40b0877.css"><link rel="prefetch" href="/learn-vue-router/assets/js/3.fa474f6a.js"><link rel="prefetch" href="/learn-vue-router/assets/js/5.5c82cce2.js"><link rel="prefetch" href="/learn-vue-router/assets/js/6.59e696e8.js"><link rel="prefetch" href="/learn-vue-router/assets/js/7.323ac100.js">
+    <link rel="stylesheet" href="/learn-vue-router/assets/css/1.styles.5a8ea794.css"><link rel="stylesheet" href="/learn-vue-router/assets/css/2.styles.a40b0877.css"><link rel="stylesheet" href="/learn-vue-router/assets/css/styles.20ecd743.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/learn-vue-router/" class="home-link router-link-active"><!----> <span class="site-name">Vue Router源码分析</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/theniceangel/learn-vue-router" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/theniceangel/learn-vue-router" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading"><span>介绍</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/learn-vue-router/introduce.html" class="sidebar-link">介绍</a></li><li><a href="/learn-vue-router/install.html" class="sidebar-link">安装</a></li></ul></div></li><li><div class="sidebar-group"><p class="sidebar-heading open"><span>杂项</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/learn-vue-router/util.html" class="sidebar-link">Vue-Router 的工具库</a></li><li><a href="/learn-vue-router/data-type.html" class="active sidebar-link">数据类型总览</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="数据类型总览"><a href="#数据类型总览" aria-hidden="true" class="header-anchor">#</a> 数据类型总览</h1> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 返回通过 path-to-regexp 库处理 route.path 的 正则，拥有 keys 属性</span>
+declare <span class="token keyword">class</span> <span class="token class-name">RouteRegExp</span> <span class="token keyword">extends</span> <span class="token class-name">RegExp</span> <span class="token punctuation">{</span>
+  keys<span class="token punctuation">:</span> Array<span class="token operator">&lt;</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> string<span class="token punctuation">,</span> optional<span class="token punctuation">:</span> boolean <span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// path-to-regexp 库的第三个参数</span>
+declare type PathToRegexpOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  sensitive<span class="token operator">?</span><span class="token punctuation">:</span> boolean<span class="token punctuation">,</span>
+  strict<span class="token operator">?</span><span class="token punctuation">:</span> boolean<span class="token punctuation">,</span>
+  end<span class="token operator">?</span><span class="token punctuation">:</span> boolean
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 字典类型的泛型</span>
+declare type Dictionary<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span>key<span class="token punctuation">:</span> string<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token constant">T</span> <span class="token punctuation">}</span>
+
+<span class="token comment">// 导航守卫</span>
+declare type NavigationGuard <span class="token operator">=</span> <span class="token punctuation">(</span>
+  to<span class="token punctuation">:</span> Route<span class="token punctuation">,</span>
+  <span class="token keyword">from</span><span class="token punctuation">:</span> Route<span class="token punctuation">,</span>
+  next<span class="token punctuation">:</span> <span class="token punctuation">(</span>to<span class="token operator">?</span><span class="token punctuation">:</span> RawLocation <span class="token operator">|</span> <span class="token boolean">false</span> <span class="token operator">|</span> Function <span class="token operator">|</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
+<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> any
+
+<span class="token comment">// 实例化 router 的配置项</span>
+declare type RouterOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  routes<span class="token operator">?</span><span class="token punctuation">:</span> Array<span class="token operator">&lt;</span>RouteConfig<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  mode<span class="token operator">?</span><span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  fallback<span class="token operator">?</span><span class="token punctuation">:</span> boolean<span class="token punctuation">;</span>
+  base<span class="token operator">?</span><span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  linkActiveClass<span class="token operator">?</span><span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  linkExactActiveClass<span class="token operator">?</span><span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  parseQuery<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>query<span class="token punctuation">:</span> string<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> Object<span class="token punctuation">;</span>
+  stringifyQuery<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>query<span class="token punctuation">:</span> Object<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> string<span class="token punctuation">;</span>
+  scrollBehavior<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>
+    to<span class="token punctuation">:</span> Route<span class="token punctuation">,</span>
+    <span class="token keyword">from</span><span class="token punctuation">:</span> Route<span class="token punctuation">,</span>
+    savedPosition<span class="token punctuation">:</span> <span class="token operator">?</span>Position
+  <span class="token punctuation">)</span> <span class="token operator">=&gt;</span> PositionResult <span class="token operator">|</span> Promise<span class="token operator">&lt;</span>PositionResult<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// redirect 的配置项</span>
+declare type RedirectOption <span class="token operator">=</span> RawLocation <span class="token operator">|</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">:</span> Route<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> RawLocation<span class="token punctuation">)</span>
+
+<span class="token comment">// routes 每一项的配置项</span>
+declare type RouteConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+  path<span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  name<span class="token operator">?</span><span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  component<span class="token operator">?</span><span class="token punctuation">:</span> any<span class="token punctuation">;</span>
+  components<span class="token operator">?</span><span class="token punctuation">:</span> Dictionary<span class="token operator">&lt;</span>any<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  redirect<span class="token operator">?</span><span class="token punctuation">:</span> RedirectOption<span class="token punctuation">;</span>
+  alias<span class="token operator">?</span><span class="token punctuation">:</span> string <span class="token operator">|</span> Array<span class="token operator">&lt;</span>string<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  children<span class="token operator">?</span><span class="token punctuation">:</span> Array<span class="token operator">&lt;</span>RouteConfig<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  beforeEnter<span class="token operator">?</span><span class="token punctuation">:</span> NavigationGuard<span class="token punctuation">;</span>
+  meta<span class="token operator">?</span><span class="token punctuation">:</span> any<span class="token punctuation">;</span>
+  props<span class="token operator">?</span><span class="token punctuation">:</span> boolean <span class="token operator">|</span> Object <span class="token operator">|</span> Function<span class="token punctuation">;</span>
+  caseSensitive<span class="token operator">?</span><span class="token punctuation">:</span> boolean<span class="token punctuation">;</span>
+  pathToRegexpOptions<span class="token operator">?</span><span class="token punctuation">:</span> PathToRegexpOptions<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 由 RouteConfig 生成的路由记录</span>
+declare type RouteRecord <span class="token operator">=</span> <span class="token punctuation">{</span>
+  path<span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  regex<span class="token punctuation">:</span> RouteRegExp<span class="token punctuation">;</span>
+  components<span class="token punctuation">:</span> Dictionary<span class="token operator">&lt;</span>any<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  instances<span class="token punctuation">:</span> Dictionary<span class="token operator">&lt;</span>any<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  name<span class="token punctuation">:</span> <span class="token operator">?</span>string<span class="token punctuation">;</span>
+  parent<span class="token punctuation">:</span> <span class="token operator">?</span>RouteRecord<span class="token punctuation">;</span>
+  redirect<span class="token punctuation">:</span> <span class="token operator">?</span>RedirectOption<span class="token punctuation">;</span>
+  matchAs<span class="token punctuation">:</span> <span class="token operator">?</span>string<span class="token punctuation">;</span>
+  beforeEnter<span class="token punctuation">:</span> <span class="token operator">?</span>NavigationGuard<span class="token punctuation">;</span>
+  meta<span class="token punctuation">:</span> any<span class="token punctuation">;</span>
+  props<span class="token punctuation">:</span> boolean <span class="token operator">|</span> Object <span class="token operator">|</span> Function <span class="token operator">|</span> Dictionary<span class="token operator">&lt;</span>boolean <span class="token operator">|</span> Object <span class="token operator">|</span> Function<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 位置信息</span>
+declare type Location <span class="token operator">=</span> <span class="token punctuation">{</span>
+  _normalized<span class="token operator">?</span><span class="token punctuation">:</span> boolean<span class="token punctuation">;</span>
+  name<span class="token operator">?</span><span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  path<span class="token operator">?</span><span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  hash<span class="token operator">?</span><span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  query<span class="token operator">?</span><span class="token punctuation">:</span> Dictionary<span class="token operator">&lt;</span>string<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  params<span class="token operator">?</span><span class="token punctuation">:</span> Dictionary<span class="token operator">&lt;</span>string<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  append<span class="token operator">?</span><span class="token punctuation">:</span> boolean<span class="token punctuation">;</span>
+  replace<span class="token operator">?</span><span class="token punctuation">:</span> boolean<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+declare type RawLocation <span class="token operator">=</span> string <span class="token operator">|</span> Location
+
+<span class="token comment">// 每一次路径切换生成的 Route</span>
+declare type Route <span class="token operator">=</span> <span class="token punctuation">{</span>
+  path<span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  name<span class="token punctuation">:</span> <span class="token operator">?</span>string<span class="token punctuation">;</span>
+  hash<span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  query<span class="token punctuation">:</span> Dictionary<span class="token operator">&lt;</span>string<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  params<span class="token punctuation">:</span> Dictionary<span class="token operator">&lt;</span>string<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  fullPath<span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  matched<span class="token punctuation">:</span> Array<span class="token operator">&lt;</span>RouteRecord<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  redirectedFrom<span class="token operator">?</span><span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  meta<span class="token operator">?</span><span class="token punctuation">:</span> any<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/learn-vue-router/util.html" class="prev">
+          Vue-Router 的工具库
+        </a></span> <!----></p></div> </div> <!----></div></div>
+    <script src="/learn-vue-router/assets/js/4.2f25cbbd.js" defer></script><script src="/learn-vue-router/assets/js/app.20ecd743.js" defer></script>
+  </body>
+</html>

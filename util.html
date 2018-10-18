@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue-Router 的工具库 | Vue Router源码分析</title>
+    <meta name="description" content="Vue Router 源码分析">
+    
+    
+    <link rel="preload" href="/learn-vue-router/assets/css/styles.20ecd743.css" as="style"><link rel="preload" href="/learn-vue-router/assets/js/app.20ecd743.js" as="script"><link rel="preload" href="/learn-vue-router/assets/js/7.323ac100.js" as="script"><link rel="prefetch" href="/learn-vue-router/assets/js/2.a40b0877.js"><link rel="prefetch" href="/learn-vue-router/assets/css/1.styles.5a8ea794.css"><link rel="prefetch" href="/learn-vue-router/assets/js/1.5a8ea794.js"><link rel="prefetch" href="/learn-vue-router/assets/css/2.styles.a40b0877.css"><link rel="prefetch" href="/learn-vue-router/assets/js/3.fa474f6a.js"><link rel="prefetch" href="/learn-vue-router/assets/js/4.2f25cbbd.js"><link rel="prefetch" href="/learn-vue-router/assets/js/5.5c82cce2.js"><link rel="prefetch" href="/learn-vue-router/assets/js/6.59e696e8.js">
+    <link rel="stylesheet" href="/learn-vue-router/assets/css/1.styles.5a8ea794.css"><link rel="stylesheet" href="/learn-vue-router/assets/css/2.styles.a40b0877.css"><link rel="stylesheet" href="/learn-vue-router/assets/css/styles.20ecd743.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/learn-vue-router/" class="home-link router-link-active"><!----> <span class="site-name">Vue Router源码分析</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/theniceangel/learn-vue-router" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/theniceangel/learn-vue-router" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading"><span>介绍</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/learn-vue-router/introduce.html" class="sidebar-link">介绍</a></li><li><a href="/learn-vue-router/install.html" class="sidebar-link">安装</a></li></ul></div></li><li><div class="sidebar-group"><p class="sidebar-heading open"><span>杂项</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/learn-vue-router/util.html" class="active sidebar-link">Vue-Router 的工具库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/learn-vue-router/util.html#path" class="sidebar-link">path</a></li></ul></li><li><a href="/learn-vue-router/data-type.html" class="sidebar-link">数据类型总览</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="vue-router-的工具库"><a href="#vue-router-的工具库" aria-hidden="true" class="header-anchor">#</a> Vue-Router 的工具库</h1> <h2 id="path"><a href="#path" aria-hidden="true" class="header-anchor">#</a> path</h2> <ul><li><strong>cleanPath</strong></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">cleanPath</span> <span class="token punctuation">(</span>path<span class="token punctuation">:</span> string<span class="token punctuation">)</span><span class="token punctuation">:</span> string <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> path<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/\/\//g</span><span class="token punctuation">,</span> <span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token string">'//foo//baz'</span> <span class="token operator">=&gt;</span> <span class="token string">'/foo/baz'</span>
+</code></pre></div><ul><li><strong>parsePath</strong></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">parsePath</span> <span class="token punctuation">(</span>path<span class="token punctuation">:</span> string<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  path<span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  query<span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+  hash<span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> hash <span class="token operator">=</span> <span class="token string">''</span>
+  <span class="token keyword">let</span> query <span class="token operator">=</span> <span class="token string">''</span>
+
+  <span class="token keyword">const</span> hashIndex <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'#'</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hashIndex <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    hash <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>hashIndex<span class="token punctuation">)</span>
+    path <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> hashIndex<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> queryIndex <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'?'</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>queryIndex <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    query <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>queryIndex <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    path <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> queryIndex<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">,</span>
+    query<span class="token punctuation">,</span>
+    hash
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token string">'/a?foo=bar#ok?baz=qux'</span><span class="token string">' =&gt; {path: '</span><span class="token operator">/</span>a<span class="token string">', query: '</span>foo<span class="token operator">=</span>bar<span class="token string">', hash: '</span>#ok<span class="token operator">?</span>baz<span class="token operator">=</span>qux'<span class="token punctuation">}</span>
+</code></pre></div><ul><li><strong>resolvePath</strong></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">resolvePath</span> <span class="token punctuation">(</span>
+  relative<span class="token punctuation">:</span> string<span class="token punctuation">,</span>
+  base<span class="token punctuation">:</span> string<span class="token punctuation">,</span>
+  append<span class="token operator">?</span><span class="token punctuation">:</span> boolean
+<span class="token punctuation">)</span><span class="token punctuation">:</span> string <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> firstChar <span class="token operator">=</span> relative<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>firstChar <span class="token operator">===</span> <span class="token string">'/'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> relative
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>firstChar <span class="token operator">===</span> <span class="token string">'?'</span> <span class="token operator">||</span> firstChar <span class="token operator">===</span> <span class="token string">'#'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> base <span class="token operator">+</span> relative
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> stack <span class="token operator">=</span> base<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+
+  <span class="token comment">// remove trailing segment if:</span>
+  <span class="token comment">// - not appending</span>
+  <span class="token comment">// - appending to trailing slash (last segment is empty)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>append <span class="token operator">||</span> <span class="token operator">!</span>stack<span class="token punctuation">[</span>stack<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// resolve relative path</span>
+  <span class="token keyword">const</span> segments <span class="token operator">=</span> relative<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/^\//</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> segments<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> segment <span class="token operator">=</span> segments<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>segment <span class="token operator">===</span> <span class="token string">'..'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>segment <span class="token operator">!==</span> <span class="token string">'.'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>segment<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// ensure leading slash</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>stack<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    stack<span class="token punctuation">.</span><span class="token function">unshift</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> stack<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token string">&quot;resolvePath('/a', '/b')&quot;</span> <span class="token operator">=&gt;</span> <span class="token string">'/a'</span>
+<span class="token string">&quot;resolvePath('c/d', '/b')&quot;</span> <span class="token operator">=&gt;</span> <span class="token string">'/c/d'</span>
+<span class="token string">&quot;resolvePath('c/d', '/b', true)&quot;</span> <span class="token operator">=&gt;</span> <span class="token string">'/b/c/d'</span>
+<span class="token string">&quot;resolvePath('../d', '/a/b/c')&quot;</span> <span class="token operator">=&gt;</span> <span class="token string">'/a/d'</span>
+<span class="token string">&quot;resolvePath('../d', '/a/b/c', true)&quot;</span> <span class="token operator">=&gt;</span> <span class="token string">'/a/b/d'</span>
+<span class="token string">&quot;resolvePath('?foo=bar', '/a/b?foo=bar')&quot;</span> <span class="token operator">=&gt;</span> <span class="token string">'/a'</span>
+<span class="token string">&quot;resolvePath('#hi', '/a/b')&quot;</span> <span class="token operator">=&gt;</span> <span class="token string">'/a/b#hi'</span>
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/learn-vue-router/install.html" class="prev">
+          安装
+        </a></span> <span class="next"><a href="/learn-vue-router/data-type.html">
+          数据类型总览
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/learn-vue-router/assets/js/7.323ac100.js" defer></script><script src="/learn-vue-router/assets/js/app.20ecd743.js" defer></script>
+  </body>
+</html>
